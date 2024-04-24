@@ -150,17 +150,6 @@ public int deleteFirst(){
     }
 ```
 
-**To get the Node**
-```public Node get(int index){
-        Node node = head; //start from head and move ahead index times
-        for(int i = 0; i < index; i++)
-        {
-            node = node.next;
-        }
-        return node; //returns reference pointer to that node
-    }```
-
-
 **Deleting Node at Last(Tail)**
 - The method checks if the size of the list is less than or equal to 1, indicating that there's either only one node or no node in the list.
 - If the size is 1 or less, it means there's only one node or the list is empty. In such cases, it calls the deleteFirst method to handle the deletion.\
@@ -173,7 +162,8 @@ public int deleteFirst(){
 - The next reference of the new last node (tail.next) is set to null, breaking the link to the removed last node.
 - Finally, the stored value of the deleted last node (val) is returned to the caller.
 
-```public int deleteLast(){
+```
+public int deleteLast(){
         if(size <=1 ){
             return deleteFirst();
         }
@@ -182,7 +172,8 @@ public int deleteFirst(){
         tail = secondLast;
         tail.next = null;
         return val;
-    }```
+    }
+```
 
 **Deleting Node at Index**
 - The method first checks if the specified index is 0, indicating the first node. If so, it calls the deleteFirst method to handle the deletion.
@@ -196,7 +187,8 @@ public int deleteFirst(){
 - This effectively removes the node at the specified index from the list.
 - Finally, the stored value of the deleted node (val) is returned to the caller.
 
-```public int delete(int index){
+```
+public int delete(int index){
         if(index == 0){
             return deleteFirst();
         }
@@ -207,7 +199,8 @@ public int deleteFirst(){
         int val = prev.next.value;
         prev.next = prev.next.next;
         return val;
-    }```
+    }
+```
 
 ***Finding a Node by its index**
 - The method initializes a temporary node node with the reference to the head node.
@@ -219,6 +212,14 @@ public int deleteFirst(){
 
 - Once the desired node is reached, the method returns a reference to that node (node).
 
+**To get the Node**
+- The method initializes a temporary node node with the reference to the head node.
+- This temporary node is used to traverse the linked list starting from the beginning.
+- It enters a loop that iterates index times.
+- During each iteration, it moves the temporary node (node) to the next node in the list by updating it to node.next.
+- This process continues until the temporary node reaches the node at the specified index.
+- Once the desired node is reached, the method returns a reference to that node (node).
+
 ```
 public Node get(int index){
         Node node = head; //start from head and move ahead index times
@@ -227,7 +228,8 @@ public Node get(int index){
             node = node.next;
         }
         return node; //returns reference pointer to that node
-    }```
+    }
+```
 **Displaying Node**
 
 - The method starts by initializing a temporary variable temp with the reference to the head node.
