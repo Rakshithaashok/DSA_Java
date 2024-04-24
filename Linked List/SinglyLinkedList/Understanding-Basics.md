@@ -152,7 +152,7 @@ public int deleteFirst(){
 
 **Deleting Node at Last(Tail)**
 - The method checks if the size of the list is less than or equal to 1, indicating that there's either only one node or no node in the list.
-- If the size is 1 or less, it means there's only one node or the list is empty. In such cases, it calls the deleteFirst method to handle the deletion.\
+- If the size is 1 or less, it means there's only one node or the list is empty. In such cases, it calls the deleteFirst method to handle the deletion.
 
 - If the size of the list is greater than 1, it means there are multiple nodes in the list.
 - The method retrieves a reference to the second last node (secondLast) using the get method, passing size - 2 as the index. This is the node just before the last node.
@@ -202,7 +202,7 @@ public int delete(int index){
     }
 ```
 
-***Finding a Node by its Value**
+**Finding a Node by its Value**
 - The method initializes a temporary node node with the reference to the head node.
 - This temporary node is used to traverse the linked list starting from the beginning.
 
@@ -267,8 +267,6 @@ public Node get(int index){
 ```
 **USAGE**
 ```
-package src;
-
 public class Main {
     public static void main(String[] args) {
         LL list = new LL();
@@ -280,8 +278,26 @@ public class Main {
         list.insertFirst(29);
         list.insertLast(99);
         list.insert(24, 2);
-        list.display(); //Output:- 29 -> 6 -> 24 -> 25 -> 18 -> 5 -> 12 -> 99 -> END
+        list.display();
+        System.out.println(list.deleteFirst());
+        list.display();
+        System.out.println(list.deleteLast());
+        list.display();
+        System.out.println(list.delete(2));
+        list.display();
     }
 }
+
+```
+
+**OUTPUT**
+```
+29 -> 6 -> 24 -> 25 -> 18 -> 5 -> 12 -> 99 -> END
+29
+6 -> 24 -> 25 -> 18 -> 5 -> 12 -> 99 -> END
+99
+6 -> 24 -> 25 -> 18 -> 5 -> END
+25
+6 -> 24 -> 18 -> 5 -> END
 
 ```
