@@ -53,7 +53,7 @@ The constructor
 - This allows you to create nodes and establish their connections to other nodes in a single step.
 
 **Inserting Node at First (head)**
-![Singly Linked List Inserting Node at First](Images/SinglyLinkedList_InsertAtFirst.png)
+![Singly Linked List Inserting Node at First](../Images/SinglyLinkedList_InsertAtFirst.png)
 
 - First, a new node is created with the given value (val).
 - The next reference of the newly created node is set to point to the current head of the linked list.
@@ -78,7 +78,7 @@ The constructor
   ```
 **Inserting Node at Last (Tail)**
 
-![Singly Linked List Inserting Node at First](Images/SinglyLinkedList_InsertAtLast.png)
+![Singly Linked List Inserting Node at First](../Images/SinglyLinkedList_InsertAtLast.png)
 
 - The method checks if the tail reference is null, indicating that the linked list is empty.
 - If the list is empty, the method calls the insertFirst method to insert the new node at the beginning of the list.
@@ -101,7 +101,7 @@ The constructor
 ```
   **Inserting Node by its Index Value**
 
-  ![Singly Linked List Inserting Node at Index](Images/SinglyLinkedList_InsertAtIndex.png)
+  ![Singly Linked List Inserting Node at Index](../Images/SinglyLinkedList_InsertAtIndex.png)
 
 - The method first checks if the specified index is 0
 - In this case, it calls the insertFirst method to handle the insertion.
