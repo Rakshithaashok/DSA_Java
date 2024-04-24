@@ -202,17 +202,31 @@ public int delete(int index){
     }
 ```
 
-***Finding a Node by its index**
+***Finding a Node by its Value**
 - The method initializes a temporary node node with the reference to the head node.
 - This temporary node is used to traverse the linked list starting from the beginning.
 
-- It enters a loop that iterates index times.
-- During each iteration, it moves the temporary node (node) to the next node in the list by updating it to node.next.
-- This process continues until the temporary node reaches the node at the specified index.
+- It enters a loop that continues until the temporary node (node) becomes null, indicating the end of the list.
+- During each iteration, it checks if the value of the current node (node.value) matches the specified value (val).
+- If a node with the desired value is found, the method immediately returns a reference to that node.
 
-- Once the desired node is reached, the method returns a reference to that node (node).
+-If no node with the specified value is found after traversing the entire list, the method returns null.
+- This indicates that the value does not exist in the linked list.
 
-**To get the Node**
+```
+public Node find(int val){
+        Node node = head;
+        while (node!=null){
+            if(node.value == val){
+                return node;
+            }
+            node = node.next;
+        }
+        return null;
+    }
+```
+
+**To get the Node By Index**
 - The method initializes a temporary node node with the reference to the head node.
 - This temporary node is used to traverse the linked list starting from the beginning.
 - It enters a loop that iterates index times.
