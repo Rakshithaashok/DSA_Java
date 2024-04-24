@@ -129,6 +129,12 @@ The constructor
         temp.next = node;
     }
 ```
+**Deleting Node at First (Head)**
+
+
+
+
+
 **Displaying Node**
 
 - The method starts by initializing a temporary variable temp with the reference to the head node.
