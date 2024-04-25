@@ -120,9 +120,10 @@ public class Solution
 - The method uses the "slow and fast pointers" technique to detect a loop in the linked list.
 - In each iteration of the while loop, the slow pointer moves one step forward (slow = slow.next), while the fast pointer moves two steps forward (fast = fast.next.next).
 - If there is a loop in the list, eventually the slow pointer will meet the fast pointer, indicating the presence of a loop (slow == fast).
-- 
-- Once a loop is detected, the method initializes a count variable to 1 (since we've already detected one node in the loop).
-- It moves the fast pointer one step forward (fast = fast.next) and increments the count until the fast pointer meets the slow pointer again, completing one loop cycle.
-- The value of count represents the length of the loop, so it is returned.
 
-- If the while loop completes without finding a loop (i.e., if fast becomes null or fast.next becomes null), it means there is no loop in the list, and the method returns 0.
+**IMPORTANT POINT TO NOTE**
+
+ -  It's important to note that in the Floyd's Tortoise and Hare Algorithm, the difference in distances covered by the slow and fast pointers after each move should be 1 for effective loop detection.
+- If the fast pointer were to move by a larger factor, such as 2 or 3, instead of 1, the pointers might not collide within the loop. This is because the difference in their positions may not shrink after each move, potentially causing the fast pointer to "jump over" the slow pointer without detection.
+- By ensuring that the fast pointer moves exactly twice as fast as the slow pointer (i.e., the difference in their positions reduces by 1 after each move), we guarantee that if there's a loop, the fast pointer will eventually catch up to and collide with the slow pointer within the loop.
+
