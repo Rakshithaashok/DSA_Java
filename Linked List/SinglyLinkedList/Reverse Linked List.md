@@ -118,5 +118,6 @@ The prev pointer is now holding onto the last node, which is the new beginning o
 **Conclusion:**
 The original linked list 1 -> 2 -> 3 -> 4 -> 5 has been successfully reversed to 5 -> 4 -> 3 -> 2 -> 1.
 
+![Image1](../Images/Screenshot (91).png)
 
  
