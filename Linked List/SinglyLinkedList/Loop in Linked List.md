@@ -177,3 +177,34 @@ public class Solution {
 - The distance from the slow pointer to the starting point of the cycle is equal to the distance from the starting point to the fast node inside the cycle.
 - Similarly, the distance from the fast node inside the cycle to the starting point of the cycle (where the two pointers meet) is also equal.
 - It ensures that when the slow and fast pointers are moved simultaneously after resetting, they will meet at the starting point of the cycle.
+
+  **Deleting Middle Node In Linked List** [LeetCode](https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/)
+```
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        if(head == null) return null;
+        if(head.next == null) return null;
+        ListNode slow = head, fast = head.next;
+        while(fast != null && fast.next != null && fast.next.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
+}
+```
+- You handle the base cases where the list is empty (head == null) or contains only one node (head.next == null).
+- In these cases, there is no middle node to delete, so you return null.
+- You initialize two pointers, slow and fast, where slow moves one step at a time and fast moves two steps at a time.
+- This technique is commonly known as the "tortoise and hare" approach.
+  
+- In the while loop condition while(fast != null && fast.next != null && fast.next.next != null), we are checking three conditions:
+- fast != null: This condition ensures that fast pointer does not reach the end of the list.
+- fast.next != null: This condition ensures that fast pointer's next node exists, preventing a NullPointerException when accessing fast.next.next.
+- fast.next.next != null: This condition ensures that fast pointer's next node's next node exists, which means fast is at least two steps away from the end of the list.
+- These conditions collectively ensure that fast pointer moves two steps at a time and stops when it reaches the end or the second last node of the list.
+
+- Once you find the middle node (or the node just before the middle node), you update its next pointer to skip the next node, effectively deleting the middle node.
+- This is achieved by setting slow.next to slow.next.next.
+- Finally, you return the head of the modified list.
