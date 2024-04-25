@@ -1,4 +1,5 @@
-**141 LINKED LIST CYCLE** [LeetCode](https://leetcode.com/problems/linked-list-cycle/description/)
+**141 LINKED LIST CYCLE** 
+**Detecting a Cycle** [LeetCode](https://leetcode.com/problems/linked-list-cycle/description/)
 
 Given head, the head of a linked list, determine if the linked list has a cycle in it.
 
@@ -127,3 +128,51 @@ public class Solution
 - If the fast pointer were to move by a larger factor, such as 2 or 3, instead of 1, the pointers might not collide within the loop. This is because the difference in their positions may not shrink after each move, potentially causing the fast pointer to "jump over" the slow pointer without detection.
 - By ensuring that the fast pointer moves exactly twice as fast as the slow pointer (i.e., the difference in their positions reduces by 1 after each move), we guarantee that if there's a loop, the fast pointer will eventually catch up to and collide with the slow pointer within the loop.
 
+**Return Starting Point of Loop** [Leetcode](https://leetcode.com/problems/linked-list-cycle-ii/description/)
+```
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                slow = head;
+                while(slow!=fast){
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
+            }
+        }
+        return null;
+    }
+}
+```
+- We use the "Floyd's Tortoise and Hare Algorithm" to detect a cycle in the linked list.
+- The slow pointer moves one step forward in each iteration (slow = slow.next), while the fast pointer moves two steps forward (fast = fast.next.next).
+- If there's a cycle in the list, the two pointers will meet at some point (slow == fast).
+
+- Once a cycle is detected, we reset the slow pointer to the head of the list while keeping the fast pointer where it is.
+- Then, we move both pointers at the same pace (one step at a time) until they meet again.
+- The meeting point of the slow and fast pointers is the node where the cycle begins.
+
+- If a cycle is detected, the method returns the node where the cycle begins.
+- If there's no cycle, the method returns null.
+
+  **Point To Note**
+- The distance from the slow pointer to the starting point of the cycle is equal to the distance from the starting point to the fast node inside the cycle.
+- Similarly, the distance from the fast node inside the cycle to the starting point of the cycle (where the two pointers meet) is also equal.
+- It ensures that when the slow and fast pointers are moved simultaneously after resetting, they will meet at the starting point of the cycle.
