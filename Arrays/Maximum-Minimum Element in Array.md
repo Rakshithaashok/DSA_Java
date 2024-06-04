@@ -100,6 +100,11 @@ class MinMaxArray {
     minmax(arr); // Call the minmax method to find minimum and maximum elements
   }
 }
+
+Time Complexity: O(n)
+
+Auxiliary Space: O(1) as no extra space was needed.
+
 ```
 **Maximum and minimum of an array using the Tournament Method (divide array into two)**
 ```
@@ -156,6 +161,7 @@ class MinMax {
   }
 }
 ```
+
 **without Math.min and Math.max function in tournament method**
 ```
 import java.util.*; // Import for functionalities like finding array length
