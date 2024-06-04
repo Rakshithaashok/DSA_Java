@@ -1,4 +1,4 @@
-**Insertion Sort**
+**Insertion Sort** [https://youtu.be/8mJ-OhcfpYg?si=bC_tGHJwulO_41sc]
 - After comparing elements to the left,
 - Shift elements to the right to make room to insert a value,
 - Quadratic time 0(n^2)
