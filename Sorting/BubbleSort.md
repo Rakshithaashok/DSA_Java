@@ -1,4 +1,4 @@
-**Bubble Sort**
+**Bubble Sort** [https://youtu.be/Dv4qLJcxus8?si=lecNACeb1ojLuBh6]
 - pairs of adjacent elements are compared, and the elements are swapped if they are not in order
 - Quadratic time O(n^2)
 - small data set - okay-ish
