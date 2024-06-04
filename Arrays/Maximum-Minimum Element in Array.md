@@ -101,3 +101,123 @@ class MinMaxArray {
   }
 }
 ```
+**Maximum and minimum of an array using the Tournament Method (divide array into two)**
+```
+import java.util.*; // Import for functionalities like Math.min and Math.max
+
+class MinMax {
+
+  // This class defines a method to find the minimum and maximum elements in an array.
+
+  public static int[] minmax(int[] arr, int low, int high) {
+    // This method takes an integer array 'arr', the starting index 'low', and the ending index 'high' as input.
+    // It returns an array containing the minimum and maximum values found in the specified sub-array.
+
+    int min = Integer.MAX_VALUE; // Initialize min to maximum integer value (for comparison)
+    int max = Integer.MIN_VALUE; // Initialize max to minimum integer value (for comparison)
+
+    // Base cases for handling arrays with one or two elements
+    if (low == high) {
+      // If there's only one element, both min and max are that element
+      min = arr[low];
+      max = arr[low];
+      return new int[]{min, max}; // Return an array containing min and max
+    }
+
+    if (low + 1 == high) {
+      // If there are two elements, compare them to find min and max
+      min = Math.min(arr[low], arr[high]); // Use Math.min for cleaner comparison
+      max = Math.max(arr[low], arr[high]); // Use Math.max for cleaner comparison
+      return new int[]{min, max}; // Return an array containing min and max
+    }
+
+    // Recursive case for arrays with more than two elements
+    int mid = (low + high) / 2; // Find the middle index for dividing the array
+
+    // Recursively find min and max in the left half (low to mid)
+    int[] mml = minmax(arr, low, mid);
+
+    // Recursively find min and max in the right half (mid+1 to high)
+    int[] mmr = minmax(arr, mid + 1, high);
+
+    // Update min and max based on comparisons between halves
+    min = Math.min(mml[0], mmr[0]); // Find the overall minimum
+    max = Math.max(mml[1], mmr[1]); // Find the overall maximum
+
+    // Return an array containing the minimum and maximum values found
+    return new int[]{min, max};
+  }
+
+  public static void main(String[] args) {
+    int[] arr = {5, 3, 2, 6, 7, 24, -245};
+    int[] getminmax = minmax(arr, 0, arr.length - 1); // Call minmax for the entire array
+    System.out.println("Minimum element: " + getminmax[0]);
+    System.out.println("Maximum element: " + getminmax[1]);
+  }
+}
+```
+**without Math.min and Math.max function in tournament method**
+```
+import java.util.*; // Import for functionalities like finding array length
+
+class MinMax {
+
+  // This class defines a method to find the minimum and maximum elements in an array.
+
+  public static int[] minmax(int[] arr, int low, int high) {
+    // This method takes an integer array 'arr', the starting index 'low', and the ending index 'high' as input.
+    // It returns an array containing the minimum and maximum values found in the specified sub-array.
+
+    int min = Integer.MAX_VALUE; // Initialize min to maximum integer value (for comparison)
+    int max = Integer.MIN_VALUE; // Initialize max to minimum integer value (for comparison)
+
+    // Base cases for handling arrays with one or two elements
+    if (low == high) {
+      // If there's only one element, both min and max are that element
+      min = arr[low];
+      max = arr[low];
+      return new int[]{min, max}; // Return an array containing min and max
+    }
+
+    if (low + 1 == high) {
+      // If there are two elements, compare them to find min and max
+      if (arr[low] < arr[high]) {
+        min = arr[low];
+        max = arr[high];
+      } else {
+        min = arr[high];
+        max = arr[low];
+      }
+      return new int[]{min, max}; // Return an array containing min and max
+    }
+
+    // Recursive case for arrays with more than two elements
+    int mid = (low + high) / 2; // Find the middle index for dividing the array
+
+    // Recursively find min and max in the left half (low to mid)
+    int[] mml = minmax(arr, low, mid);
+
+    // Recursively find min and max in the right half (mid+1 to high)
+    int[] mmr = minmax(arr, mid + 1, high);
+
+    // Update min and max based on comparisons between halves
+    min = (mml[0] < mmr[0]) ? mml[0] : mmr[0];  // Use ternary operator for min
+    // Check if element at index 0 in mml is less than element at index 0 in mmr. If true, assign mml[0] to min, otherwise assign mmr[0]
+    max = (mml[1] > mmr[1]) ? mml[1] : mmr[1];  // Use ternary operator for max
+    // Check if element at index 1 in mml is greater than element at index 1 in mmr. If true, assign mml[1] to max, otherwise assign mmr[1]
+
+    // Return an array containing the minimum and maximum values found
+    return new int[]{min, max};
+  }
+
+  public static void main(String[] args) {
+    int[] arr = {5, 3, 2, 6, 7, 24, -245};
+    int[] getminmax = minmax(arr, 0, arr.length - 1); // Call minmax for the entire array (0 to length-1)
+    System.out.println("Minimum element: " + getminmax[0]);
+    System.out.println("Maximum element: " + getminmax[1]);
+  }
+}
+```
+Time Complexity: O(n)
+
+Auxiliary Space: O(log n) as the stack space will be filled for the maximum height of the tree formed during recursive calls same as a binary tree.
