@@ -1,3 +1,10 @@
+**Bubble Sort**
+- pairs of adjacent elements are compared, and the elements are swapped if they are not in order
+- Quadratic time O(n^2)
+- small data set - okay-ish
+- large data set - BAD (NOT Recommended)
+
+
 ```
 class BubbleSort{
     // Static method to perform bubble sort on an array of integers
