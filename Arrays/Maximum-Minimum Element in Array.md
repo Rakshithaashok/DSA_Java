@@ -227,3 +227,58 @@ class MinMax {
 Time Complexity: O(n)
 
 Auxiliary Space: O(log n) as the stack space will be filled for the maximum height of the tree formed during recursive calls same as a binary tree.
+
+**Maximum and minimum of an array by comparing in pairs**
+```
+import java.util.*;
+
+public class GFG {
+
+    static int[] getMinMax(int arr[], int n) {
+        int min, max;
+
+        /* If array has even number of elements then initialize the first two elements as minimum and maximum */
+        if (n % 2 == 0) {
+            if (arr[0] > arr[1]) {
+                max = arr[0];
+                min = arr[1];
+            } else {
+                min = arr[0];
+                max = arr[1];
+            }
+        } else {
+            /* If array has odd number of elements then initialize the first element as minimum and maximum */
+            min = arr[0];
+            max = arr[0];
+        }
+
+        /* In the while loop, pick elements in pair and compare the pair with max and min so far */
+        int i = (n % 2 == 0) ? 2 : 1; // Set starting index based on even/odd array size
+        while (i < n - 1) {
+            if (arr[i] > arr[i + 1]) {
+                max = (max > arr[i]) ? max : arr[i]; // Update max if current element is larger
+                min = (min < arr[i + 1]) ? min : arr[i + 1]; // Update min if next element is smaller
+            } else {
+                max = (max > arr[i + 1]) ? max : arr[i + 1]; // Update max if next element is larger
+                min = (min < arr[i]) ? min : arr[i]; // Update min if current element is smaller
+            }
+            i += 2;
+        }
+
+        // Handle the last element if the array has odd number of elements
+        if (n % 2 != 0 && i == n - 1) {
+            max = Math.max(max, arr[i]); // Update max for the last element in odd-sized array (can't avoid Math.max here)
+        }
+
+        return new int[]{min, max}; // Return an array containing min and max
+    }
+
+    public static void main(String args[]) {
+        int arr[] = {1000, 11, 445, 1, 330, 3000};
+        int arr_size = 6;
+        int[] minmax = getMinMax(arr, arr_size);
+        System.out.printf("Minimum element is %d", minmax[0]);
+        System.out.printf("\nMaximum element is %d", minmax[1]);
+    }
+}
+```
