@@ -38,31 +38,43 @@ Constraints:
 
 **BruteForce Approach**
 ```
-class Solution{
-
-    // arr: input array
-    // n: size of array
-    //Function to find the sum of contiguous subarray with maximum sum.
-    long maxSubarraySum(int arr[], int n){
-        
-        // Your code here
+public class MaxSubArray {
+    public static void main(String[] args) {
+        int[] arr = {-2,-3,4,-1,-2,1,5,-3};
         int max = Integer.MIN_VALUE;
         for(int i = 0; i < arr.length; i++){
-            for(int j = i; j < arr.length; j++){
+            for(int j = i; j < arr.length; j++) {
                 int sum = 0;
-                for(int k = i; k <= j; k++){
+                for (int k = i; k <= j; k++) {
                     sum += arr[k];
                 }
                 max = Math.max(sum, max);
             }
-            
         }
-        return (long)max;
+        System.out.println(max);
     }
-    
 }
 ```
 Time Complexity: 𝑂(𝑛^3)
 
 Space Complexity: 𝑂(1)
 
+**Better Solution**
+```
+public class MaxSubArray {
+    public static void main(String[] args) {
+        int[] arr = {-2,-3,4,-1,-2,1,5,-3};
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < arr.length; i++){
+            int sum = 0;
+            for(int j = i; j < arr.length; j++) {
+                sum += arr[j];
+                max = Math.max(sum, max);
+            }
+        }
+        System.out.println(max);
+    }
+}
+```
+Time Complexity: O(n^2)
+Space Complexity: O(1)
