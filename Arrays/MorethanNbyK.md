@@ -26,32 +26,47 @@ Follow the steps below to solve the problem:
 - If the frequency is greater than n/k then print the element.
 
 ```
-package src;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class MorethanNbyK {
+
+
     public static void main(String[] args){
-        int[] arr = {1, 1, 2, 2, 3, 5, 4,
-                2, 2, 3, 1, 1, 1};
-        int K = 4;
-        morethanNbyK(arr, arr.length, K);
+        int[] arr = { 4, 5, 6, 7, 8, 4, 4 };
+        int K = 3;
+        int target = arr.length/K; // 7/3 = 2
+        int me = majorityElement(arr);
+        int count = ismajority(arr, me);
+        if(count > target)
+            System.out.println(me);
+        else
+            System.out.println("No element Present");
     }
 
-    public static void morethanNbyK(int[] arr, int N, int K){
-        int target = N/K;
-        HashMap<Integer, Integer> elements = new HashMap<>();
-
-        for(int i : arr){
-            elements.put(i, elements.getOrDefault(i, 0) +1);
-        }
-
-        for(Map.Entry <Integer, Integer> entry : elements.entrySet()){
-            if(entry.getValue() > target){
-                System.out.println(entry.getKey());
+    public static int majorityElement(int[] arr){
+        int me = 0;
+        int count = 1;
+        for(int i = 1; i < arr.length; i++){
+            if(arr[me] == arr[i]){
+                count++;
+            }
+            else{
+                count--;
+            }
+            if(count == 0){
+                me = i;
+                count = 1;
             }
         }
+        return arr[me];
+    }
+
+    public static int ismajority(int[] arr, int majorityelement){
+        int count = 0;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] == majorityelement){
+                count++;
+            }
+        }
+        return count;
     }
 }
 ```
