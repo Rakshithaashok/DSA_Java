@@ -68,10 +68,9 @@ public class MorethanNbyK {
 
 
     public static void main(String[] args){
-        int[] arr = {1, 1, 2, 2, 3, 5, 4,
-                2, 2, 3, 1, 1, 1};
-        int K = 4;
-        int target = arr.length/K;
+        int[] arr = { 4, 5, 6, 7, 8, 4, 4 };
+        int K = 3;
+        int target = arr.length/K; // 7/3 = 2
         int me = majorityElement(arr);
         int count = ismajority(arr, me);
         if(count > target)
@@ -88,10 +87,10 @@ public class MorethanNbyK {
                 me = i;
                 count = 1;
             }
-            if(i == me){
+            else if(i == me){
                 count++;
             }
-            if(i != me){
+            else if(i != me){
                 count--;
             }
         }
@@ -108,7 +107,6 @@ public class MorethanNbyK {
         return count;
     }
 }
-
 ```
 
 Time Complexity - O(n) 
