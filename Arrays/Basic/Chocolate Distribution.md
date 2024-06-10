@@ -46,12 +46,12 @@ import java.util.Collections;
 
 class Solution {
     public long findMinDiff(ArrayList<Integer> a, int n, int m) {
-        Collections.sort(a); // Doubt: Why are we sorting initially?
+        Collections.sort(a);
         long min = Integer.MAX_VALUE;
         int start = 0;
         int end = start + (m - 1);
         while (end < n) {
-            min = Math.min(min, a.get(end) - a.get(start)); // Doubt: How does sliding window help in finding the minimum difference?
+            min = Math.min(min, a.get(end) - a.get(start));
             end++;
             start++;
         }
