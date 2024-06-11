@@ -1,4 +1,4 @@
-# Dutch National Flag Algorithm for Three-Way Partitioning
+# Dutch National Flag Algorithm for Three-Way Partitioning [https://www.geeksforgeeks.org/problems/three-way-partitioning/1]
 
 ## Problem Statement
 
