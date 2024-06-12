@@ -28,7 +28,7 @@ Output: 1 56789
 
 Explanation: minimum and maximum element of array are 1 and 56789.
  
-Your Task:  
+## Your Task:  
 
 You don't need to read input or print anything. Your task is to complete the function getMinMax() which takes the array A[] and its size N as inputs and returns the minimum and maximum element of the array.
 
