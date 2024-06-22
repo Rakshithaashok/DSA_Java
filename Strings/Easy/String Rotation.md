@@ -249,3 +249,65 @@ The queues are equal, so the function returns true.
 Time Complexity: O(n^2)
 
 Space Complexity: O(n)
+
+## Efficient Approach: 
+
+Follow the given steps to solve the problem
+
+- Create a temp string and store concatenation of str1 to str1 in temp, i.e temp = str1.str1
+- If str2 is a substring of temp then str1 and str2 are rotations of each other.
+
+## Example: 
+
+str1 = “ABACD”, str2 = “CDABA”
+
+temp = str1.str1 = “ABACDABACD”
+
+Since str2 is a substring of temp, str1 and str2 are rotations of each other.
+
+## Code
+
+```
+class StringRotation {
+    public static void main(String[] args) {
+        String s1 = "abcd";
+        String s2 = "bcda";
+
+        if (checkString(s1, s2))
+            System.out.println("s2 is rotation of s1");
+        else
+            System.out.println("s2 is not rotation of s1");
+    }
+
+    public static boolean checkString(String s1, String s2) {
+         return ((s1.length()==s2.length()) && ((s1+s2).indexOf(s2))!=-1);
+    }
+}
+```
+
+## Explanation
+
+- Concatenation:
+
+(str1 + str1) concatenates str1 with itself. For example, if str1 is "AACD", then (str1 + str1) becomes "AACDAACD".
+- indexOf Method:
+
+The indexOf method is called on the concatenated string (str1 + str1) with the argument str2.
+
+This method returns the index at which the specified substring str2 first occurs in the concatenated string (str1 + str1).
+
+If str2 is not found, indexOf returns -1.
+
+For example:
+If str1 = "AACD" and str2 = "ACDA", (str1 + str1) becomes "AACDAACD".
+Calling "AACDAACD".indexOf("ACDA") returns 2, as "ACDA" starts at index 2 in the concatenated string.
+
+- Comparison:
+
+- If the index returned by indexOf is not -1, it means that str2 is found in the concatenated string (str1 + str1).
+- This implies that str2 is indeed a rotation of str1, as it is found within the concatenated string obtained by rotating str1.
+
+Time Complexity: O(n)
+
+Space Complexity: O(n)
+
