@@ -208,3 +208,43 @@ class Solution {
 - Once you find the middle node (or the node just before the middle node), you update its next pointer to skip the next node, effectively deleting the middle node.
 - This is achieved by setting slow.next to slow.next.next.
 - Finally, you return the head of the modified list.
+
+## Removing the Loop [https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1]
+
+**Youtube** [https://www.youtube.com/live/sgS3F08xuBk?si=FdYED4Zc5acjMDPH]
+
+```
+class Solution
+{
+    //Function to remove a loop in the linked list.
+    public static void removeLoop(Node head){
+        // code here
+        // remove the loop without losing any nodes
+        if(head == null || head.next == null){
+            return;
+        }
+        Node slow = head;
+        Node fast = head;
+        while(fast!=
+        null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                slow = head;
+                if(slow == fast){
+                    while(fast.next!=slow)
+                        fast = fast.next;
+                }
+                else{
+                    while(slow.next!=fast.next){
+                        slow = slow.next;
+                        fast = fast.next;
+                    }
+                }
+                fast.next = null;
+            }
+        }
+    
+    }
+}
+```
